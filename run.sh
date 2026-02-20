@@ -3,13 +3,14 @@
 echo "Starting project..."
 
 # source <file> позволяет использовать переменные, хранящиеся внутри него
-source config.tx
+source config.txt
 
 echo "Mode: $MODE"
 echo "Timeout: $TIMEOUT"
 
-if [[ -z "$SECRET_KEY"]]; then
+if [[ -z "$SECRET_KEY" ]]; then
   echo "ERROR: SECRET_KEY is not set"
+  exit 1
 fi
 
 echo "Loading users..."
@@ -44,7 +45,7 @@ echo "Found files: ${#txt_files[@]}"
 
 for f in "${txt_files[@]}"; do
   echo "File: $f"
-  echo "Lines: $(wc -l < "$f")"
+  echo "Lines:" $(wc -l < "$f")
 done
 
 ./scripts/calc.sh 5 10
